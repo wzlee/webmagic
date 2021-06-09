@@ -1,8 +1,13 @@
 package us.codecraft.webmagic;
 
-import us.codecraft.webmagic.utils.HttpConstant;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
 
-import java.util.*;
+import us.codecraft.webmagic.utils.HttpConstant;
 
 /**
  * Object contains setting for crawler.<br>
@@ -203,7 +208,7 @@ public class Site {
 
     /**
      * Set the interval between the processing of two pages.<br>
-     * Time unit is micro seconds.<br>
+     * Time unit is milliseconds.<br>
      *
      * @param sleepTime sleepTime
      * @return this
@@ -215,7 +220,7 @@ public class Site {
 
     /**
      * Get the interval between the processing of two pages.<br>
-     * Time unit is micro seconds.<br>
+     * Time unit is milliseconds.<br>
      *
      * @return the interval between the processing of two pages,
      */

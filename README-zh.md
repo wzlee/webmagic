@@ -38,12 +38,12 @@ webmagic使用maven管理依赖，在项目中添加对应的依赖即可使用w
 <dependency>
     <groupId>us.codecraft</groupId>
     <artifactId>webmagic-core</artifactId>
-    <version>0.7.3</version>
+    <version>0.7.4</version>
 </dependency>
 <dependency>
     <groupId>us.codecraft</groupId>
     <artifactId>webmagic-extension</artifactId>
-    <version>0.7.3</version>
+    <version>0.7.4</version>
 </dependency>
 ```
         
@@ -93,7 +93,7 @@ webmagic还包含两个可用的扩展包，因为这两个包都依赖了比较
 PageProcessor是webmagic-core的一部分，定制一个PageProcessor即可实现自己的爬虫逻辑。以下是抓取osc博客的一段代码：
 
 ```java
-public class OschinaBlogPageProcesser implements PageProcessor {
+public class OschinaBlogPageProcessor implements PageProcessor {
 
     private Site site = Site.me().setDomain("my.oschina.net");
 
@@ -113,7 +113,7 @@ public class OschinaBlogPageProcesser implements PageProcessor {
     }
 
     public static void main(String[] args) {
-        Spider.create(new OschinaBlogPageProcesser()).addUrl("http://my.oschina.net/flashsword/blog")
+        Spider.create(new OschinaBlogPageProcessor()).addUrl("http://my.oschina.net/flashsword/blog")
              .addPipeline(new ConsolePipeline()).run();
     }
 }
