@@ -11,7 +11,7 @@ import org.openqa.selenium.WebDriver;
  */
 public class WebDriverPoolTest {
 
-    private String chromeDriverPath = "/Users/yihua/Downloads/chromedriver";
+    private String chromeDriverPath = "/Users/lizhiwei/Downloads/chromedriver";
 
     @Ignore("need chrome driver")
     @Test
