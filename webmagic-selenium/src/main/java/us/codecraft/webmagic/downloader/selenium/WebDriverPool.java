@@ -1,5 +1,6 @@
 package us.codecraft.webmagic.downloader.selenium;
 
+import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -46,9 +47,9 @@ class WebDriverPool {
 	private WebDriver mDriver = null;
 	private boolean mAutoQuitDriver = true;
 
-	private static final String DEFAULT_CONFIG_FILE = "/data/webmagic/webmagic-selenium/config.ini";
-	private static final String DRIVER_FIREFOX = "firefox";
+	private static final String DEFAULT_CONFIG_FILE_PATH = "/config.ini";
 	private static final String DRIVER_CHROME = "chrome";
+	private static final String DRIVER_FIREFOX = "firefox";
 	private static final String DRIVER_PHANTOMJS = "phantomjs";
 
 	protected static Properties sConfig;
@@ -65,12 +66,15 @@ class WebDriverPool {
 	public void configure() throws IOException {
 		// Read config file
 		sConfig = new Properties();
-		String configFile = DEFAULT_CONFIG_FILE;
-		if (System.getProperty("selenuim_config")!=null){
-			configFile = System.getProperty("selenuim_config");
+		String configFile = this.getClass().getResource(DEFAULT_CONFIG_FILE_PATH).getFile();
+		if(StringUtils.isNoneEmpty(configFile)){
+			sConfig.load(new FileReader(configFile));
+		}else{
+			throw new IOException(
+					String.format(
+							"Property file '%s' not exists!",
+							DEFAULT_CONFIG_FILE_PATH));
 		}
-		sConfig.load(new FileReader(configFile));
-
 		// Prepare capabilities
 		sCaps = new DesiredCapabilities();
 		sCaps.setJavascriptEnabled(true);

@@ -22,16 +22,17 @@ public class SeleniumTest {
     @Ignore("need chrome driver")
     @Test
     public void testSelenium() {
-        System.getProperties().setProperty("webdriver.chrome.driver", "/Users/yihua/Downloads/chromedriver");
+        System.getProperties().setProperty("webdriver.chrome.driver", "/Users/lizhiwei/Downloads/chromedriver");
         Map<String, Object> contentSettings = new HashMap<String, Object>();
         contentSettings.put("images", 2);
 
         Map<String, Object> preferences = new HashMap<String, Object>();
         preferences.put("profile.default_content_settings", contentSettings);
 
-        DesiredCapabilities caps = DesiredCapabilities.chrome();
+        DesiredCapabilities caps = new DesiredCapabilities();
+        caps.setBrowserName("chrome");
         caps.setCapability("chrome.prefs", preferences);
-        caps.setCapability("chrome.switches", Arrays.asList("--user-data-dir=/Users/yihua/temp/chrome"));
+        caps.setCapability("chrome.switches", Arrays.asList("--user-data-dir=/Users/lizhiwei/temp/chrome"));
         WebDriver webDriver = new ChromeDriver(caps);
         webDriver.get("http://huaban.com/");
         WebElement webElement = webDriver.findElement(By.xpath("/html"));

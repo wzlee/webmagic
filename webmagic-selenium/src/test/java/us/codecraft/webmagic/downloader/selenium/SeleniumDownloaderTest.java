@@ -14,7 +14,7 @@ import us.codecraft.webmagic.Task;
  */
 public class SeleniumDownloaderTest {
 
-	private String chromeDriverPath = "/Users/yihua/Downloads/chromedriver";
+	private String chromeDriverPath = "/Users/lizhiwei/Downloads/chromedriver";
 
 	@Ignore("need chrome driver")
 	@Test
